@@ -1,0 +1,20 @@
+services:
+  backend:
+    build: ./backend
+    environment:
+      - LLM_PROVIDER=${LLM_PROVIDER:-auto}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - ANTHROPIC_MODEL=${ANTHROPIC_MODEL:-claude-sonnet-4-6}
+    volumes:
+      - ./backend/app/data:/app/app/data
+    expose:
+      - "8000"
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

@@ -1,0 +1,5 @@
+fastapi>=0.110
+uvicorn[standard]>=0.27
+python-multipart>=0.0.9
+xhtml2pdf>=0.2.16
+anthropic>=0.40
